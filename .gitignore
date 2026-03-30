@@ -8,6 +8,7 @@ yarn-error.log
 .env.test
 .env.production
 .env.local
+firebase-service-account.json
 
 # --- Operating System Files ---
 .DS_Store

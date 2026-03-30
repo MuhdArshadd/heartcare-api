@@ -193,6 +193,7 @@ const generateTreatment = async (req, res) => {
         ### INSTRUCTIONS:
         - Suggest 0, 1, or more treatments per time of day.
         - Only return a valid JSON array.
+        - Keep the treatment description under 150 characters.
         `;
 
         const response = await axios.post(OPENAI_URL, {
@@ -208,7 +209,6 @@ const generateTreatment = async (req, res) => {
         
         let rawText = textItem.text;
 
-        // 👇 THE FIX: Strip out markdown and extract only the JSON array 👇
         const startIndex = rawText.indexOf('[');
         const endIndex = rawText.lastIndexOf(']');
 

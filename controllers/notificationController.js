@@ -1,14 +1,11 @@
 const admin = require('firebase-admin');
 const pool = require('../config/db');
+const serviceAccount = require('../firebase-service-account.json');
 
-// Note: You will need to download your Firebase Service Account JSON file 
-// from the Firebase Console and place it in your backend folder.
-// const serviceAccount = require('../firebase-service-account.json');
-
-// // Initialize the Firebase Admin SDK
-// admin.initializeApp({
-//   credential: admin.credential.cert(serviceAccount)
-// });
+// Initialize the Firebase Admin SDK
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
 
 // Maps to: Family Pokes (Cross-device notifications)
 const sendFamilyPoke = async (req, res) => {
@@ -38,8 +35,8 @@ const sendFamilyPoke = async (req, res) => {
         // 3. Construct and send the Push Notification via Firebase
         const message = {
             notification: {
-                title: 'HeartCare Family Poke 👉',
-                body: `${senderName} is checking in on your heart health!`,
+                title: `${senderName} is checking in on you!`,
+                body: 'Open the app to send a wave back!',
             },
             token: targetToken,
         };
