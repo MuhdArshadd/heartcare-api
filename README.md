@@ -1,24 +1,27 @@
-# ❤️ HeartCare: Intelligent Cardiovascular Health Companion
+# ⚙️ HeartCare Node.js REST API
 
-> **⚙️ Backend Architecture:** The custom Node.js/PostgreSQL backend powering this application can be found [here](https://github.com/MuhdArshadd/heartcare-api).
+> **📱 Mobile Application:** This API serves the award-winning HeartCare Flutter application, which can be found [here](https://github.com/MuhdArshadd/HeartCare).
 
-HeartCare is an award-winning mobile application designed to democratize cardiovascular health monitoring. By combining on-device Machine Learning with Cloud AI, the app provides real-time risk assessments, personalized treatment plans, and a unique Family Mode for location-based health monitoring.
+This repository contains the backend infrastructure for the HeartCare mobile application. It is a secure, highly-scalable REST API built with Node.js and Express, migrating away from legacy Azure instances to a modern Supabase PostgreSQL architecture. 
 
-## 🏆 Recognition & Awards
-This project has been heavily validated and recognized for its innovation in health-tech:
-* **🥇 Gold Award** - iDRIVE 2025
-* **🥈 Silver Award** - InnoGEN Challenge 2026
-* **🥈 Silver Award** - WINSTEM 2025
+## 🏗️ Architecture Highlights
+* **RESTful API Design:** Implements clean, stateless routing and modular controllers to handle high-volume requests from the mobile client efficiently.
+* **Robust Authentication & Security:** Secures all user data and API endpoints using custom middleware powered by JSON Web Tokens (JWT) and `bcrypt` password hashing.
+* **Cross-Device Push Notifications:** Integrates the Firebase Admin SDK to act as a secure broker for real-time "Pokes" and alert triggers between family members' Android devices.
+* **Database Connection Pooling:** Utilizes `pg` and connection pooling to ensure database stability and rapid query execution under concurrent load, communicating securely with Supabase.
 
-## ✨ Core Features
-* **On-Device ML Risk Assessment:** Utilizes a highly optimized TensorFlow Lite model running natively on the device to predict cardiovascular risk without compromising sensitive health data.
-* **AI-Driven Treatment Plans:** Integrates with OpenAI to generate actionable, personalized health and diet recommendations based on the user's risk profile.
-* **Family Mode Tracking:** A custom real-time map interface (powered by Google Maps API & Geolocator) that allows families to securely monitor the location and risk status of high-risk members.
-* **Secure State Management:** Built with Provider for robust, scalable state management across the application lifecycle.
+## 🛠️ Tech Stack & Dependencies
+* **Core Framework:** Node.js & `express`
+* **Database:** PostgreSQL via `pg` (Hosted on Supabase)
+* **Security & Authentication:** * `jsonwebtoken` (Stateless Auth)
+  * `bcrypt` (Credential Hashing)
+  * `cors` (Cross-Origin Resource Sharing)
+* **External Services & APIs:**
+  * `firebase-admin` (Push Notification Brokering)
+  * `axios` (External API Routing)
+  * `nodemailer` (Automated Email Services)
+  * OpenAI API
+* **Environment & Logging:** `dotenv` (Environment Variables), `morgan` (HTTP Request Logging)
 
-## 🛠️ Tech Stack
-* **Framework:** Flutter / Dart
-* **Machine Learning:** TensorFlow Lite
-* **Mapping:** Google Maps API, Geolocator
-* **Cloud Messaging:** Firebase Cloud Messaging (FCM)
-* **API Integration:** RESTful architecture communicating with a custom Node.js backend.
+## 🚀 Deployment
+This API is actively deployed and hosted on **Render**, utilizing their web service architecture for continuous deployment and secure environment variable management.
